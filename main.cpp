@@ -15,6 +15,12 @@ int					main()
 
   while (!parser.readUntil('j'))
     ;
+  parser.beginCapture("test");
+  while (!parser.readUntil(';'))
+    ;
+  std::string res;
+  parser.endCapture("test", res);
+  std::cout << res << std::endl;
 
   return EXIT_SUCCESS;
 }

@@ -13,7 +13,7 @@ public:
   ConsumerParser(ProducterStream &prod) :
     prod_(prod)
   {
-    it_ = tot_.end();
+    it_ = tot_.begin();
   }
 
   virtual ~ConsumerParser()
@@ -161,7 +161,7 @@ public:
   {
     if (captures_.find(tag) == captures_.end())
       return false;
-    out = std::string(captures_[tag], it_);
+    out = tot_.substr(std::distance(tot_.begin(), captures_[tag]), std::distance(tot_.begin(), it_));
     return true;
   }
 private:
