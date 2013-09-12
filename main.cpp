@@ -1,9 +1,11 @@
 #include				<cstdlib>
 #include				"ProducterStream.hpp"
+#include				"ConsumerParser.hpp"
 
 int					main()
 {
   ProducterStream			st;
+  ConsumerParser			parser(st);
 
   if (!st.loadFile("main.cpp"))
     {
@@ -11,11 +13,8 @@ int					main()
       return EXIT_FAILURE;
     }
 
-
-  while (!st.isEndOfFile())
-    {
-      std::cout << st.nextString();
-    }
+  while (!parser.readUntil('j'))
+    ;
 
   return EXIT_SUCCESS;
 }
